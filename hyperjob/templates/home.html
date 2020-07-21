@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Welcome Back, {{ user.username }}</title>
+    </head>
+    <body>
+    {% if user.is_staff %}
+        <form action="/vacancy/new" method="post">
+            {% csrf_token %}
+            <label for="vacancy_description">Description: </label>
+            <input id="vacancy_description" type="text" name="description">
+            <br>
+            <input type="submit" value="Create">
+            <br>
+        </form>
+    {% else %}
+        <form action="/resume/new" method="post">
+            {% csrf_token %}
+            <label for="resume_description">Description: </label>
+            <input id="resume_description" type="text" name="description">
+            <br>
+            <input type="submit" value="Create">
+            <br>
+        </form>
+    {% endif %}
+    </body>
+</html>
